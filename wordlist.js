@@ -1,4 +1,4 @@
-const tagalogwords=[
+const filipinowords=[
 "aam",
 "aapaapa",
 "aba",
