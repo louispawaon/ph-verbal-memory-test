@@ -1,11 +1,3 @@
-/*!
-* Start Bootstrap - Scrolling Nav v5.0.4 (https://startbootstrap.com/template/scrolling-nav)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
-*/
-//
-// Scripts
-// 
 
 //START OF BOILERPLATE CODE
 window.addEventListener('DOMContentLoaded', event => {
@@ -36,12 +28,34 @@ window.addEventListener('DOMContentLoaded', event => {
 //END OF BOILERPLATE CODE
 
 //START OF OWN CODE
+let watched=[];
+let currentword;
+let truthval;
+
+function getRandomWord(filipinowords){
+    
+    return filipinowords[Math.floor(Math.random() * filipinowords.length)];
+}
+
+function valueCheck(){
+    currentword=document.getElementById("wordlabel").innerHTML;
+    if(watched.includes(currentword)){
+        truthval=false;
+    }
+    else{
+        truthval=true;
+        watched.push(currentword);
+    }
+    console.log(watched);
+}
+
 window.onload = function() {
     document.getElementById('firstone').style.display = 'none';
+    document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords);
   };
 
-function hideElements(){
-    var x = document.getElementById("firstone");
+document.getElementById("startbtn").onclick=function(){
+    var x = document.getElementById("firstone")
     if(x.style.display === "none"){
         x.style.display = "block";
     }
@@ -49,5 +63,27 @@ function hideElements(){
         x.style.display = "none";
     }
     console.log("working");
-
 }
+
+document.getElementById("seen").onclick=function(){
+    var getScore = document.getElementById("score").innerHTML;
+    var newScore=parseInt(getScore)+100;
+    document.getElementById("score").innerHTML=newScore;
+    document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords);
+    console.log("hello");
+}
+
+document.getElementById("new").onclick=function(){
+    valueCheck();
+    if(truthval){
+        var getScore = document.getElementById("score").innerHTML;
+        var newScore=parseInt(getScore)+100;
+        document.getElementById("score").innerHTML=newScore;
+    }
+    document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords);
+    console.log("hello");
+}
+
+
+
+
