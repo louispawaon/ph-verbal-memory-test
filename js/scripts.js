@@ -7,6 +7,7 @@
 // Scripts
 // 
 
+//START OF BOILERPLATE CODE
 window.addEventListener('DOMContentLoaded', event => {
 
     // Activate Bootstrap scrollspy on the main nav element
@@ -32,3 +33,21 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+//END OF BOILERPLATE CODE
+
+//START OF OWN CODE
+window.onload = function() {
+    document.getElementById('firstone').style.display = 'none';
+  };
+
+function hideElements(){
+    var x = document.getElementById("firstone");
+    if(x.style.display === "none"){
+        x.style.display = "block";
+    }
+    else{
+        x.style.display = "none";
+    }
+    console.log("working");
+
+}
