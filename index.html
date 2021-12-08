@@ -34,7 +34,7 @@
             </div>
         </header>
         <!-- Main Game-->
-        <section id="maingame" display="none">
+        <section id="maingame">
             <div id="firstone" class="container px-4"> 
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
@@ -45,7 +45,8 @@
                                 <p id="score">0</p>
                             </div>
                             <div class="col-lg-2">
-                                <h3 class="lives">Lives|</h3>
+                                <h3 class="liveslabel">Lives|</h3>
+                                <p id="lives">3</p>
                             </div>
                             <div class="col-lg-8">
                                 <p id="wordlabel"></p>
@@ -60,6 +61,14 @@
                     </div>
                 </div>
             </div>
+            <div id="gameOver" class="container px-4">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2>Game Over</h2>
+                        <p class="instructions">You have run out of lives. Your final score is: <b id="finalscore"></b></p>
+                        <button id="restart">Try Again</button>
+                    </div>
+                </div>
         </section>
         <!--
         <section class="bg-light" id="services">
