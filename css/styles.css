@@ -23,7 +23,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #0d6efd;
+  --bs-primary: #2b87d1;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -31,7 +31,7 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-primary-rgb: 13, 110, 253;
+  --bs-primary-rgb: 43, 135, 209;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
@@ -3200,9 +3200,9 @@ textarea.form-control-lg {
 }
 
 .btn-light {
+  font-weight: bold;
   color: #000;
-  background-color: #f8f9fa;
-  border-color: #f8f9fa;
+  background-color: #ffd154;
 }
 .btn-light:hover {
   color: #000;
@@ -11288,14 +11288,15 @@ header {
 }
 
 section {
-  padding-top: 9rem;
-  padding-bottom: 9rem;
+  padding-top: 3rem;
+  padding-bottom: 14rem;
 }
 .instructions{
   text-align: center;
+  font-size: 18px;
 }
 footer{
-  position: flex;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 2.5rem; 
