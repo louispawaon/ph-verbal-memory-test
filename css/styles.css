@@ -488,6 +488,7 @@ progress {
 }
 
 .lead {
+  text-align: center;
   font-size: 1.25rem;
   font-weight: 300;
 }
@@ -11298,4 +11299,10 @@ header {
 section {
   padding-top: 9rem;
   padding-bottom: 9rem;
+}
+footer{
+  position: flex;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; 
 }
