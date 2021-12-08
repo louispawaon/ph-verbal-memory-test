@@ -29,16 +29,32 @@ window.addEventListener('DOMContentLoaded', event => {
 
 //START OF OWN CODE
 let watched=[];
+let newScore;
 let currentword;
 let truthval;
+let newCounter=0;
+let seenCounter=0;
+let currentLives;
+let howRand = Math.floor(Math.random() * 6); // Random number from 0-5 used for determining how random should the words be chosen
+
+//Window onload functions to not show the div on load and at the same time get the first word from filipinowords
+
+window.onload = function() {
+    document.getElementById('firstone').style.display = 'none';
+    document.getElementById('gameOver').style.display = 'none';
+    document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords);
+    currentLives = document.getElementById("lives").innerHTML;
+  };
+
+//Get Random Filipino Word from the wordlist.js 
 
 function getRandomWord(filipinowords){
-    
     return filipinowords[Math.floor(Math.random() * filipinowords.length)];
 }
 
-function valueCheck(){
-    currentword=document.getElementById("wordlabel").innerHTML;
+//Check the truth value if the current word is in the watched array
+
+function valueCheck(currentword){
     if(watched.includes(currentword)){
         truthval=false;
     }
@@ -46,13 +62,8 @@ function valueCheck(){
         truthval=true;
         watched.push(currentword);
     }
-    console.log(watched);
+    console.log(watched); //To be deleted
 }
-
-window.onload = function() {
-    document.getElementById('firstone').style.display = 'none';
-    document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords);
-  };
 
 document.getElementById("startbtn").onclick=function(){
     var x = document.getElementById("firstone")
@@ -62,28 +73,82 @@ document.getElementById("startbtn").onclick=function(){
     else{
         x.style.display = "none";
     }
-    console.log("working");
+    console.log("working"); //To be deleted
 }
 
-document.getElementById("seen").onclick=function(){
-    var getScore = document.getElementById("score").innerHTML;
-    var newScore=parseInt(getScore)+100;
-    document.getElementById("score").innerHTML=newScore;
+//to be fixed
+document.getElementById("restart").onclick=function(){
+    document.getElementById("gameOver").style.display = 'none';
+    watched=[];
+    newCounter=0;
+    seenCounter=0;
+    newScore=0;
+    currentLives=3;
+    document.getElementById("lives").innerHTML=3;
     document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords);
-    console.log("hello");
+    document.getElementById("score").innerHTML=0;
+}
+
+function gameOver(){
+    document.getElementById("gameOver").style.display = 'block';
+    document.getElementById("finalscore").innerHTML=newScore;
+}
+
+
+document.getElementById("seen").onclick=function(){
+    currentword=document.getElementById("wordlabel").innerHTML;
+    valueCheck(currentword);
+    if(!truthval){
+        seenCounter+=1;
+        var getScore = document.getElementById("score").innerHTML;
+        newScore=parseInt(getScore)+100;
+        document.getElementById("score").innerHTML=newScore;
+        document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords); 
+    }
+    else{
+        var getLife = document.getElementById("lives").innerHTML;
+        var newLife = parseInt(getLife)-1;
+        currentLives=newLife;
+        document.getElementById("lives").innerHTML=newLife;
+        document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords); 
+    }
+    if(currentLives==0){
+        gameOver();
+    } 
+    console.log("hello"); //To be deleted
 }
 
 document.getElementById("new").onclick=function(){
-    valueCheck();
+    currentword=document.getElementById("wordlabel").innerHTML;
+    valueCheck(currentword);
     if(truthval){
+        newCounter+=1;
         var getScore = document.getElementById("score").innerHTML;
-        var newScore=parseInt(getScore)+100;
+        newScore=parseInt(getScore)+100;
         document.getElementById("score").innerHTML=newScore;
     }
-    document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords);
-    console.log("hello");
+    else{
+        var getLife = document.getElementById("lives").innerHTML;
+        var newLife = parseInt(getLife)-1;
+        currentLives=newLife;
+        document.getElementById("lives").innerHTML=newLife;
+        document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords); 
+    }
+    if(newCounter%howRand==0){
+        currentword=watched[Math.floor(Math.random() * watched.length)]; 
+        document.getElementById("wordlabel").innerHTML=currentword;
+    }
+    else{
+       document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords); 
+    }
+    if(currentLives==0){
+        gameOver();
+    }
+    console.log("hello"); //To be deleted
 }
 
+//game over if 0
+//fix how random the word should show up
 
 
 
