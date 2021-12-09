@@ -4539,6 +4539,8 @@ textarea.form-control-lg {
 
 .card-title {
   margin-bottom: 0.5rem;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .card-subtitle {
@@ -11296,8 +11298,31 @@ section {
   font-size: 18px;
   justify-content: center;
 }
+.fa-facebook-f, .fa-twitter, .fa-linkedin-in, .fa-github{
+  color:white;
+}
+.gameElems{
+  font-size: 22px;
+  font-weight: bold;
+  opacity: 0.8;
+}
+.gameChange{
+  font-size: 22px;
+  font-weight: bold;
+  opacity: 0.8;
+  color: #ff0000;
+}
+.gameScore{
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+  margin-right: 30px;
+}
+.filiword{
+  text-align: center;
+}
 footer{
-  position: relative;
+  position: flex;
   bottom: 0;
   width: 100%;
   height: 2.5rem; 
