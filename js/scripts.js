@@ -36,6 +36,7 @@ let truthval;
 let newCounter=0;
 let seenCounter=0;
 let currentLives;
+
 //Window onload functions to not show the div on load and at the same time get the first word from filipinowords
 
 window.onload = function() {
