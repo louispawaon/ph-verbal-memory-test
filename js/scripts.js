@@ -29,13 +29,15 @@ window.addEventListener('DOMContentLoaded', event => {
 
 //START OF OWN CODE
 let watched=[];
-let gameOverSigns=["Unlucky!","Try Again!","Sayang!","Uh oh!","Almost!","It's ok!", "Hapita uy!"]
+let gameOverSigns=["Unlucky!","Try Again!","Sayang!","Uh oh!","Almost!","It's ok!", "Hapita uy!", "Kaya mo yan!", "Padayon ra!"]
 let newScore;
 let getScore;
 let currentword;
+let previousword;
 let truthval;
 let newCounter=0;
 let seenCounter=0;
+let btnCounter=0;
 let currentLives;
 
 //Window onload functions to not show the div on load and at the same time get the first word from filipinowords
@@ -71,6 +73,7 @@ function valueCheck(currentword){
     }
 }
 
+//Change color function for score for every interval
 function colorChange(newScore){
     if(newScore>=100&& newScore<=500){
         document.getElementById("score").style.color="red";
@@ -84,6 +87,16 @@ function colorChange(newScore){
     else if(newScore>5000){
         document.getElementById("score").style.color="#6667AB";
     }
+
+    if((btnCounter%2==0)||(btnCounter%5==0)){
+        document.getElementById("wordlabel").style.color="#FF7F00";
+    }
+    else if(btnCounter%3==0){
+        document.getElementById("wordlabel").style.color="#00FF00";
+    }
+    else{
+        document.getElementById("wordlabel").style.color="#8B00FF";
+    }
 }
 
 function gameOver(){
@@ -92,7 +105,6 @@ function gameOver(){
     document.getElementById("seen").disabled = true;
     document.getElementById("new").disabled = true;
     document.getElementById("finalscore").innerHTML=newScore;
-
 }
 
 document.getElementById("startbtn").onclick=function(){
@@ -117,16 +129,18 @@ document.getElementById("restart").onclick=function(){
     currentLives=3;
     document.getElementById("lives").innerHTML=3;
     document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords);
+    document.getElementById("wordlabel").style.color="black";
     document.getElementById("score").innerHTML=0;
 }
 
 
-
 document.getElementById("seen").onclick=function(){
+    btnCounter+=1;
     currentword=document.getElementById("wordlabel").innerHTML;
     valueCheck(currentword);
     if(!truthval){
-        seenCounter+=1;
+        previousword=currentword;
+        //seenCounter+=1;
         getScore = document.getElementById("score").innerHTML;
         newScore=parseInt(getScore)+100;
         document.getElementById("score").innerHTML=newScore;
@@ -145,9 +159,11 @@ document.getElementById("seen").onclick=function(){
     if(currentLives==0){
         gameOver();
     }
+    console.log(watched);
 }
 
 document.getElementById("new").onclick=function(){
+    btnCounter+=1;
     currentword=document.getElementById("wordlabel").innerHTML;
     valueCheck(currentword);
     if(truthval){
@@ -177,6 +193,7 @@ document.getElementById("new").onclick=function(){
     if(currentLives==0){
         gameOver();
     }
+    console.log(watched);
 }
 
 
