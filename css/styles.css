@@ -11294,6 +11294,7 @@ section {
 .instructions{
   text-align: center;
   font-size: 18px;
+  justify-content: center;
 }
 footer{
   position: relative;
