@@ -36,7 +36,7 @@ let truthval;
 let newCounter=0;
 let seenCounter=0;
 let currentLives;
-let howRand = Math.floor(Math.random() * 6); // Random number from 0-5 used for determining how random should the words be chosen
+let howRand = Math.floor(Math.random() * 4); // Random number from 0-5 used for determining how random should the words be chosen
 
 //Window onload functions to not show the div on load and at the same time get the first word from filipinowords
 
@@ -78,6 +78,8 @@ document.getElementById("startbtn").onclick=function(){
 
 document.getElementById("restart").onclick=function(){
     document.getElementById("gameOver").style.display = 'none';
+    document.getElementById("seen").disabled = false;
+    document.getElementById("new").disabled = false;
     watched=[];
     newCounter=0;
     seenCounter=0;
@@ -90,7 +92,10 @@ document.getElementById("restart").onclick=function(){
 
 function gameOver(){
     document.getElementById("gameOver").style.display = 'block';
+    document.getElementById("seen").disabled = true;
+    document.getElementById("new").disabled = true;
     document.getElementById("finalscore").innerHTML=newScore;
+
 }
 
 
@@ -112,6 +117,10 @@ document.getElementById("seen").onclick=function(){
         currentLives=newLife;
         document.getElementById("lives").innerHTML=newLife;
         document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords); 
+    }
+    if(seenCounter%howRand==0){
+        currentword=watched[Math.floor(Math.random() * watched.length)]; 
+        document.getElementById("wordlabel").innerHTML=currentword;
     }
     if(currentLives==0){
         gameOver();
@@ -147,8 +156,6 @@ document.getElementById("new").onclick=function(){
         gameOver();
     }
 }
-
-//find way to make randomness more natural
 
 
 
