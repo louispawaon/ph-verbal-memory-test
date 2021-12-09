@@ -29,6 +29,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 //START OF OWN CODE
 let watched=[];
+let gameOverSigns=["Unlucky!","Try Again!","Sayang!","Uh oh!","Almost!","It's ok!", "Hapita uy!"]
 let newScore;
 let getScore;
 let currentword;
@@ -53,6 +54,11 @@ function getRandomWord(filipinowords){
     return filipinowords[Math.floor(Math.random() * filipinowords.length)];
 }
 
+//Get Random Game Over Sign from the gameOverSigns array
+function getRandomGameOver(gameOverSigns){
+    return gameOverSigns[Math.floor(Math.random() * gameOverSigns.length)];
+}
+
 //Check the truth value if the current word is in the watched array
 
 function valueCheck(currentword){
@@ -63,6 +69,30 @@ function valueCheck(currentword){
         truthval=true;
         watched.push(currentword);
     }
+}
+
+function colorChange(newScore){
+    if(newScore>=100&& newScore<=500){
+        document.getElementById("score").style.color="red";
+    }
+    else if(newScore>500 && newScore<=2000){
+        document.getElementById("score").style.color="blue";
+    }
+    else if(newScore>2000 && newScore<=5000){
+        document.getElementById("score").style.color="green";
+    }
+    else if(newScore>5000){
+        document.getElementById("score").style.color="#6667AB";
+    }
+}
+
+function gameOver(){
+    document.getElementById("gameset").innerHTML=getRandomGameOver(gameOverSigns);
+    document.getElementById("gameOver").style.display = 'block';
+    document.getElementById("seen").disabled = true;
+    document.getElementById("new").disabled = true;
+    document.getElementById("finalscore").innerHTML=newScore;
+
 }
 
 document.getElementById("startbtn").onclick=function(){
@@ -77,6 +107,7 @@ document.getElementById("startbtn").onclick=function(){
 
 document.getElementById("restart").onclick=function(){
     document.getElementById("gameOver").style.display = 'none';
+    document.getElementById("score").style.color="black";
     document.getElementById("seen").disabled = false;
     document.getElementById("new").disabled = false;
     watched=[];
@@ -89,13 +120,6 @@ document.getElementById("restart").onclick=function(){
     document.getElementById("score").innerHTML=0;
 }
 
-function gameOver(){
-    document.getElementById("gameOver").style.display = 'block';
-    document.getElementById("seen").disabled = true;
-    document.getElementById("new").disabled = true;
-    document.getElementById("finalscore").innerHTML=newScore;
-
-}
 
 
 document.getElementById("seen").onclick=function(){
@@ -107,6 +131,7 @@ document.getElementById("seen").onclick=function(){
         newScore=parseInt(getScore)+100;
         document.getElementById("score").innerHTML=newScore;
         document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords); 
+        colorChange(newScore);
     }
     else{
         var getLife = document.getElementById("lives").innerHTML;
@@ -119,7 +144,7 @@ document.getElementById("seen").onclick=function(){
     }
     if(currentLives==0){
         gameOver();
-    } 
+    }
 }
 
 document.getElementById("new").onclick=function(){
@@ -130,6 +155,8 @@ document.getElementById("new").onclick=function(){
         getScore = document.getElementById("score").innerHTML;
         newScore=parseInt(getScore)+100;
         document.getElementById("score").innerHTML=newScore;
+        document.getElementById("wordlabel").innerHTML=getRandomWord(filipinowords); 
+        colorChange(newScore);
     }
     else{
         var getLife = document.getElementById("lives").innerHTML;
@@ -151,6 +178,7 @@ document.getElementById("new").onclick=function(){
         gameOver();
     }
 }
+
 
 
 
