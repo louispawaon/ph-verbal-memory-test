@@ -89,14 +89,20 @@ function colorChange(newScore){
         document.getElementById("score").style.color="#6667AB";
     }
 
-    if((btnCounter%2==0)||(btnCounter%5==0)){
+    if((btnCounter%2==0)&&(btnCounter%5==0)){
         document.getElementById("wordlabel").style.color="#FF7F00";
     }
     else if(btnCounter%3==0){
         document.getElementById("wordlabel").style.color="#00FF00";
     }
-    else{
+    else if(btnCounter%2==0){
+        document.getElementById("wordlabel").style.color="#2E2B5F";
+    }
+    else if(btnCounter%5==0){
         document.getElementById("wordlabel").style.color="#8B00FF";
+    }
+    else{
+        document.getElementById("wordlabel").style.color="#FF0000";
     }
 }
 
