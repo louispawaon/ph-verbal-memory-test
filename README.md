@@ -1,5 +1,7 @@
 <p align="center">
 <a href="https://tremor6916.github.io/ph-verbal-memory-test/"><img src="https://img.shields.io/website-up-down-green-red/http/monip.org.svg"></img></a>
+<img src="https://badgen.net/badge/license/MIT/blue"></img>
+<a href="https://badgen.net/twitter/follow/miggy_pawaon""><img src="https://badgen.net/twitter/follow/miggy_pawaon"></img></a>
 </p>
 
 # __*PH VERBAL MEMORY TEST*__
@@ -30,4 +32,5 @@ If you encounter some issues, you may report them [here](https://github.com/trem
   I want to specifically thank my friends who tested this game and gave me feedback on how to improve it more.
   - [Julienne Panes](https://twitter.com/eyayayah)
   - [Cyril Olanolan](https://twitter.com/cyrilolanolan)
+  - [Viver Bungag](https://twitter.com/vvrbngag)
 
