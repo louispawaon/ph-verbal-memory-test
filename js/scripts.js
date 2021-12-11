@@ -29,9 +29,10 @@ window.addEventListener('DOMContentLoaded', event => {
 
 //START OF OWN CODE
 let watched=[];
-let gameOverSigns=["Unlucky!","Try Again!","Sayang!","Uh oh!","Almost!","It's ok!", "Hapita uy!", "Kaya mo yan!", "Padayon ra!"]
+let gameOverSigns=["Unlucky!","Try Again!","Sayang!","Uh oh!","Almost!","It's ok!", "Hapita uy!", "Kaya mo yan!", "Padayon ra!"];
 let newScore;
 let getScore;
+let highScore=0;
 let currentword;
 let previousword;
 let truthval;
@@ -105,6 +106,18 @@ function gameOver(){
     document.getElementById("seen").disabled = true;
     document.getElementById("new").disabled = true;
     document.getElementById("finalscore").innerHTML=newScore;
+
+    if(newScore>highScore){
+        highScore=newScore;
+        document.getElementById("highscore").innerHTML=highScore;
+    }
+    else if(newScore==0&&highScore==0){
+        document.getElementById("highscore").innerHTML=0;
+    }
+    else{
+        document.getElementById("highscore").innerHTML=highScore;
+    }
+    
 }
 
 document.getElementById("startbtn").onclick=function(){
@@ -159,7 +172,6 @@ document.getElementById("seen").onclick=function(){
     if(currentLives==0){
         gameOver();
     }
-    console.log(watched);
 }
 
 document.getElementById("new").onclick=function(){
@@ -193,7 +205,6 @@ document.getElementById("new").onclick=function(){
     if(currentLives==0){
         gameOver();
     }
-    console.log(watched);
 }
 
 
