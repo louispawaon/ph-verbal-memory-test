@@ -1,7 +1,7 @@
 <p align="center">
 <a href="https://tremor6916.github.io/ph-verbal-memory-test/"><img src="https://img.shields.io/website-up-down-green-red/http/monip.org.svg"></img></a>
 <img src="https://badgen.net/badge/license/MIT/blue"></img>
-<a href="https://badgen.net/twitter/follow/miggy_pawaon""><img src="https://badgen.net/twitter/follow/miggy_pawaon"></img></a>
+<a href="https://twitter.com/miggy_pawaon"><img src="https://badgen.net/twitter/follow/miggy_pawaon"></img></a>
 </p>
 
 # __*PH VERBAL MEMORY TEST*__
